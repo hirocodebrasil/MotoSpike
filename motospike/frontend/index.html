@@ -1,0 +1,622 @@
+<!-- ══════════════════════════════════
+     PAGE: HOME
+     Hiro Code - Brasil
+══════════════════════════════════ -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MotoSpike — Aluguel de Motos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo" onclick="showPage('home')">Moto<span>Spike</span></span>
+    <ul class="nav-links">
+      <li><a onclick="gotoSection('motos')">Motos</a></li>
+      <li><a onclick="gotoSection('planos')">Planos</a></li>
+      <li><a onclick="gotoSection('retirada')">Retirada</a></li>
+      <li><a onclick="gotoSection('comentarios')">Comentários</a></li>
+      <li><a onclick="gotoSection('contato')">Contato</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="openCart()">🛒 Carrinho<span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <div style="max-width:1200px;margin:0 auto;padding:0 2rem">
+    <div class="hero">
+      <div class="hero-text">
+        <div class="hero-badge">Aluguel de Motos · MotoSpike</div>
+        <h1>Pilote a moto<br>dos seus <em>sonhos</em></h1>
+        <p>Das trilhas às superesportivas — encontre a moto perfeita. Planos flexíveis, kit capacete e luvas nos planos Pro, VIP e Spike.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="gotoSection('motos')">Ver motos</button>
+          <button class="btn-secondary" onclick="gotoSection('planos')">Ver planos</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <span class="hero-card-tag">SuperEsportiva · Destaque</span>
+            <span class="live-dot">Disponível</span>
+          </div>
+          <div class="hero-moto-icon">🏍️</div>
+          <div>
+            <div class="hero-moto-name">BMW S1000 RR</div>
+            <div class="hero-moto-cat">SuperEsportiva · ABS · 210cv</div>
+          </div>
+          <div class="hero-specs">
+            <div><span class="hspec-v">299 km/h</span><span class="hspec-k">Veloc. máx</span></div>
+            <div><span class="hspec-v">2.6s</span><span class="hspec-k">0–100</span></div>
+            <div><span class="hspec-v">★ 5.0</span><span class="hspec-k">Avaliação</span></div>
+          </div>
+          <div class="hero-price-row">
+            <div><div class="hprice">R$6.500</div><div class="hprice-sub">por dia</div></div>
+            <button class="btn-hadd" onclick="addToCart('BMW S1000 RR',null)">+ Reservar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="fade-in"><div class="stat-num">36+</div><div class="stat-label">Motos disponíveis</div></div>
+      <div class="fade-in"><div class="stat-num">8</div><div class="stat-label">Categorias</div></div>
+      <div class="fade-in"><div class="stat-num">100%</div><div class="stat-label">Todas com ABS</div></div>
+      <div class="fade-in"><div class="stat-num">24h</div><div class="stat-label">Suporte</div></div>
+    </div>
+  </div>
+
+  <!-- MOTOS -->
+  <section id="motos" class="section-wrap">
+    <div class="section-tag">Frota completa</div>
+    <h2 class="section-title">Escolha sua moto</h2>
+    <p class="section-sub">Filtre por categoria. Todas com ABS e seguro básico incluso. Ou escolha um plano abaixo e adicione motos no checkout.</p>
+    <div class="cat-tabs">
+      <div class="cat-tab active" onclick="filterCat('all',this)">Todas</div>
+      <div class="cat-tab" onclick="filterCat('bigtrail',this)">Big Trail</div>
+      <div class="cat-tab" onclick="filterCat('trail',this)">Trail</div>
+      <div class="cat-tab" onclick="filterCat('naked',this)">Naked</div>
+      <div class="cat-tab" onclick="filterCat('custom',this)">Custom</div>
+      <div class="cat-tab" onclick="filterCat('sport',this)">SuperEsportiva</div>
+      <div class="cat-tab" onclick="filterCat('street',this)">Street</div>
+      <div class="cat-tab" onclick="filterCat('carenada',this)">Carenada</div>
+      <div class="cat-tab" onclick="filterCat('scooter',this)">Scooter</div>
+    </div>
+    <div class="motos-grid" id="motosGrid">
+      <!-- BIG TRAIL -->
+      <div class="moto-card fade-in" data-cat="bigtrail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏔️</div><span class="moto-badge badge-bigtrail">Big Trail</span></div><div><div class="moto-name">Honda Africa Twin</div><div class="moto-cat-label">1100cc · Bicilíndrica paralela</div></div><div class="moto-specs"><div><span class="moto-spec-v">200 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">102cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.9</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span><span class="version-tag var-version">DCT</span><span class="version-tag var-version">ES</span></div><div class="moto-footer"><div><span class="moto-price">R$4.500</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda Africa Twin',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="bigtrail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏔️</div><span class="moto-badge badge-bigtrail">Big Trail</span></div><div><div class="moto-name">Triumph Tiger 900</div><div class="moto-cat-label">900cc · Tricilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">195 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">95cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.8</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span><span class="version-tag var-version">ES</span></div><div class="moto-footer"><div><span class="moto-price">R$4.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Triumph Tiger 900',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="bigtrail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏔️</div><span class="moto-badge badge-bigtrail">Big Trail</span></div><div><div class="moto-name">BMW R 1250 GS</div><div class="moto-cat-label">1254cc · Boxer twin</div></div><div class="moto-specs"><div><span class="moto-spec-v">200 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">136cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 5.0</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span><span class="version-tag var-version">ES</span></div><div class="moto-footer"><div><span class="moto-price">R$5.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('BMW R 1250 GS',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="bigtrail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏔️</div><span class="moto-badge badge-bigtrail">Big Trail</span></div><div><div class="moto-name">Triumph Tiger 800</div><div class="moto-cat-label">800cc · Tricilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">185 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">95cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.7</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span><span class="version-tag var-version">ES</span></div><div class="moto-footer"><div><span class="moto-price">R$3.800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Triumph Tiger 800',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="bigtrail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏔️</div><span class="moto-badge badge-bigtrail">Big Trail</span></div><div><div class="moto-name">Triumph Tiger 1200</div><div class="moto-cat-label">1160cc · Tricilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">210 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">150cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.9</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span><span class="version-tag var-version">ES</span></div><div class="moto-footer"><div><span class="moto-price">R$4.800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Triumph Tiger 1200',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="bigtrail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏔️</div><span class="moto-badge badge-bigtrail">Big Trail</span></div><div><div class="moto-name">Yamaha Tenere 1200</div><div class="moto-cat-label">1200cc · Bicilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">180 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">110cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.8</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$4.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Yamaha Tenere 1200',this)">🛒 Reservar</button></div></div>
+      <!-- TRAIL -->
+      <div class="moto-card fade-in" data-cat="trail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🌲</div><span class="moto-badge badge-trail">Trail</span></div><div><div class="moto-name">BMW G 310 GS</div><div class="moto-cat-label">313cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">160 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">34cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.5</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$2.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('BMW G 310 GS',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="trail" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🌲</div><span class="moto-badge badge-trail">Trail</span></div><div><div class="moto-name">Yamaha Lander 250</div><div class="moto-cat-label">250cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">130 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">19cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.3</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$2.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Yamaha Lander 250',this)">🛒 Reservar</button></div></div>
+      <!-- NAKED -->
+      <div class="moto-card fade-in" data-cat="naked" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🔥</div><span class="moto-badge badge-naked">Naked</span></div><div><div class="moto-name">Honda CB 600F Hornet</div><div class="moto-cat-label">600cc · Tetracilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">220 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">102cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.8</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$3.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda CB 600F Hornet',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="naked" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🔥</div><span class="moto-badge badge-naked">Naked</span></div><div><div class="moto-name">Kawasaki Z900</div><div class="moto-cat-label">948cc · Tetracilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">240 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">125cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.9</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$3.800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Kawasaki Z900',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="naked" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🔥</div><span class="moto-badge badge-naked">Naked</span></div><div><div class="moto-name">KTM 1290 Super Duke R</div><div class="moto-cat-label">1301cc · Bicilíndrica LC8</div></div><div class="moto-specs"><div><span class="moto-spec-v">250 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">177cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 5.0</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$4.500</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('KTM 1290 Super Duke R',this)">🛒 Reservar</button></div></div>
+      <!-- CUSTOM -->
+      <div class="moto-card fade-in" data-cat="custom" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">💀</div><span class="moto-badge badge-custom">Custom</span></div><div><div class="moto-name">Harley-Davidson</div><div class="moto-cat-label">1868cc · V-Twin Milwaukee</div></div><div class="moto-specs"><div><span class="moto-spec-v">180 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">93cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 5.0</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$4.800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Harley-Davidson',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="custom" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🇮🇳</div><span class="moto-badge badge-custom">Custom</span></div><div><div class="moto-name">Royal Enfield 650</div><div class="moto-cat-label">650cc · Bicilíndrica paralela</div></div><div class="moto-specs"><div><span class="moto-spec-v">160 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">47cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.5</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$3.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Royal Enfield 650',this)">🛒 Reservar</button></div></div>
+      <!-- SUPERESPORTIVA -->
+      <div class="moto-card fade-in" data-cat="sport" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏁</div><span class="moto-badge badge-sport">SuperEsportiva</span></div><div><div class="moto-name">BMW S1000 RR</div><div class="moto-cat-label">999cc · Tetracilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">299 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">210cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 5.0</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$6.500</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('BMW S1000 RR',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="sport" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏁</div><span class="moto-badge badge-sport">SuperEsportiva</span></div><div><div class="moto-name">Yamaha YZF-R1</div><div class="moto-cat-label">998cc · Crossplane</div></div><div class="moto-specs"><div><span class="moto-spec-v">299 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">200cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 5.0</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$6.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Yamaha YZF-R1',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="sport" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🏁</div><span class="moto-badge badge-sport">SuperEsportiva</span></div><div><div class="moto-name">Ducati Monster 696</div><div class="moto-cat-label">696cc · Bicilíndrica L V2</div></div><div class="moto-specs"><div><span class="moto-spec-v">260 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">110cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.9</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$6.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Ducati Monster 696',this)">🛒 Reservar</button></div></div>
+      <!-- STREET -->
+      <div class="moto-card fade-in" data-cat="street" data-brake="BOTH"><div class="moto-top"><div class="moto-emoji">🛵</div><span class="moto-badge badge-street">Street</span></div><div><div class="moto-name">Honda CG 160</div><div class="moto-cat-label">162cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">120 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">14cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.4</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag cbs-version">CBS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda CG 160',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="street" data-brake="CBS"><div class="moto-top"><div class="moto-emoji">🛵</div><span class="moto-badge badge-street">Street</span></div><div><div class="moto-name">Honda CG 150</div><div class="moto-cat-label">149cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">110 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">13cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.3</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag cbs-version">CBS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda CG 150',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="street" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🛵</div><span class="moto-badge badge-street">Street</span></div><div><div class="moto-name">Honda CB 300F</div><div class="moto-cat-label">293cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">145 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">26cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.6</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$1.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda CB 300F',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="street" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🛵</div><span class="moto-badge badge-street">Street</span></div><div><div class="moto-name">Yamaha Fazer 250</div><div class="moto-cat-label">249cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">140 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">20cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.5</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$1.100</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Yamaha Fazer 250',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="street" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🛵</div><span class="moto-badge badge-street">Street</span></div><div><div class="moto-name">Honda CB 600F</div><div class="moto-cat-label">599cc · Tetracilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">230 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">102cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.8</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$2.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda CB 600F',this)">🛒 Reservar</button></div></div>
+      <!-- CARENADA -->
+      <div class="moto-card fade-in" data-cat="carenada" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">⚡</div><span class="moto-badge badge-carenada">Carenada</span></div><div><div class="moto-name">Kawasaki Ninja 400</div><div class="moto-cat-label">399cc · Bicilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">190 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">45cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.7</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$5.200</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Kawasaki Ninja 400',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="carenada" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">⚡</div><span class="moto-badge badge-carenada">Carenada</span></div><div><div class="moto-name">Yamaha YZF-R3</div><div class="moto-cat-label">321cc · Bicilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">180 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">42cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.6</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$5.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Yamaha YZF-R3',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="carenada" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">⚡</div><span class="moto-badge badge-carenada">Carenada</span></div><div><div class="moto-name">Yamaha YZF-R15</div><div class="moto-cat-label">155cc · VVA</div></div><div class="moto-specs"><div><span class="moto-spec-v">155 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">19cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.5</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span><span class="version-tag var-version">MT</span></div><div class="moto-footer"><div><span class="moto-price">R$5.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Yamaha YZF-R15',this)">🛒 Reservar</button></div></div>
+      <!-- SCOOTER -->
+      <div class="moto-card fade-in" data-cat="scooter" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🛺</div><span class="moto-badge badge-scooter">Scooter</span></div><div><div class="moto-name">Honda PCX 160</div><div class="moto-cat-label">160cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">115 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">15cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.7</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span></div><div class="moto-footer"><div><span class="moto-price">R$1.500</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda PCX 160',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="scooter" data-brake="CBS"><div class="moto-top"><div class="moto-emoji">🛺</div><span class="moto-badge badge-scooter">Scooter</span></div><div><div class="moto-name">Honda Biz 125</div><div class="moto-cat-label">125cc · Monocilíndrica</div></div><div class="moto-specs"><div><span class="moto-spec-v">100 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">10cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.3</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag cbs-version">CBS</span></div><div class="moto-footer"><div><span class="moto-price">R$1.000</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Honda Biz 125',this)">🛒 Reservar</button></div></div>
+      <div class="moto-card fade-in" data-cat="scooter" data-brake="ABS"><div class="moto-top"><div class="moto-emoji">🛺</div><span class="moto-badge badge-scooter">Scooter</span></div><div><div class="moto-name">Lambretta V200</div><div class="moto-cat-label">200cc · Italiana</div></div><div class="moto-specs"><div><span class="moto-spec-v">110 km/h</span><span class="moto-spec-k">Veloc.</span></div><div><span class="moto-spec-v">15cv</span><span class="moto-spec-k">Potência</span></div><div><span class="moto-spec-v">★ 4.5</span><span class="moto-spec-k">Nota</span></div></div><div class="moto-versions"><span class="version-tag abs-version">ABS</span></div><div class="moto-footer"><div><span class="moto-price">R$1.800</span><span class="moto-price-label">por dia</span></div><button class="btn-add" onclick="addToCart('Lambretta V200',this)">🛒 Reservar</button></div></div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="section-wrap" style="padding-top:0">
+    <div class="section-tag">Planos de aluguel</div>
+    <h2 class="section-title">Escolha seu plano</h2>
+    <p class="section-sub">Selecione o plano e escolha as motos que ele permite. Planos Pro, VIP e Spike ganham <strong>Kit Capacete + Luvas</strong> incluso.</p>
+    <div class="plans-grid">
+
+      <!-- BÁSICO -->
+      <div class="plan-card fade-in">
+        <div class="plan-name">Básico</div>
+        <div class="plan-price"><span class="plan-price-num">R$800</span><span class="plan-price-unit">/ dia</span></div>
+        <ul class="plan-features">
+          <li>1 moto por vez</li>
+          <li>Categorias Street e Scooter</li>
+          <li>Seguro básico incluso</li>
+          <li>Entrega no endereço</li>
+          <li>Suporte via WhatsApp</li>
+        </ul>
+        <button class="plan-btn basic" onclick="openPlanPage('basic')">Assinar Básico →</button>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan-card featured fade-in">
+        <div class="plan-tag">Mais popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><span class="plan-price-num">R$2.500</span><span class="plan-price-unit">/ dia</span></div>
+        <ul class="plan-features">
+          <li>2 motos simultâneas</li>
+          <li>Trail, Naked, Custom e Carenada</li>
+          <li>Seguro completo incluso</li>
+          <li>Entrega e retirada grátis</li>
+          <li>Suporte prioritário 24h</li>
+        </ul>
+        <div class="kit-badge">🪖🧤 Kit Capacete + Luvas incluso</div>
+        <button class="plan-btn featured-btn" onclick="openPlanPage('pro')">Assinar Pro →</button>
+      </div>
+
+      <!-- VIP -->
+      <div class="plan-card fade-in">
+        <div class="plan-name">VIP</div>
+        <div class="plan-price"><span class="plan-price-num">R$6.000</span><span class="plan-price-unit">/ dia</span></div>
+        <ul class="plan-features">
+          <li>Motos ilimitadas</li>
+          <li>Escolha livre em <strong>qualquer categoria</strong></li>
+          <li>Seguro total + assistência 24h</li>
+          <li>Entrega em qualquer cidade</li>
+          <li>Atendimento VIP exclusivo</li>
+          <li>Reserva com prioridade máxima</li>
+        </ul>
+        <div class="kit-badge">🪖🧤 Kit Capacete + Luvas incluso</div>
+        <button class="plan-btn featured-btn" onclick="openPlanPage('vip')">Assinar VIP →</button>
+      </div>
+
+      <!-- SPIKE -->
+      <div class="plan-card spike fade-in">
+        <div class="plan-tag gold">✦ Plano Spike</div>
+        <div class="plan-name">Plano Spike</div>
+        <div class="plan-price"><span class="plan-price-num">Personalizado</span></div>
+        <ul class="plan-features">
+          <li>Você escolhe quantas motos quer</li>
+          <li>Você escolhe quais categorias</li>
+          <li>Preço calculado na hora</li>
+          <li>Sem limite de configuração</li>
+          <li>Seguro total personalizado</li>
+          <li>Atendimento dedicado exclusivo</li>
+        </ul>
+        <div class="kit-badge">🪖🧤 Kit Capacete + Luvas incluso</div>
+        <button class="plan-btn spike-btn" onclick="openPlanPage('spike')">Montar meu Spike →</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- RETIRADA -->
+  <section id="retirada" class="retirada-section">
+    <div class="section-tag">Pontos de retirada</div>
+    <h2 class="section-title">Onde pegar sua moto</h2>
+    <p class="section-sub">Selecione o estado e a cidade mais próxima de você. Operamos em 3 estados com horários fixos.</p>
+
+    <div class="retirada-grid">
+      <div>
+        <!-- Estado tabs -->
+        <div class="estado-tabs">
+          <div class="estado-tab active" onclick="selectEstado('df',this)">
+            <span class="estado-flag">🏛️</span>
+            <span>Distrito Federal</span>
+            <span class="estado-sigla">DF</span>
+          </div>
+          <div class="estado-tab" onclick="selectEstado('pa',this)">
+            <span class="estado-flag">🌿</span>
+            <span>Pará</span>
+            <span class="estado-sigla">PA</span>
+          </div>
+          <div class="estado-tab" onclick="selectEstado('rs',this)">
+            <span class="estado-flag">⛵</span>
+            <span>Rio Grande do Sul</span>
+            <span class="estado-sigla">RS</span>
+          </div>
+        </div>
+
+        <!-- Cidades -->
+        <div class="cidades-wrap" id="cidadesWrap"></div>
+
+        <!-- Ponto selecionado -->
+        <div class="selected-ponto" id="selectedPonto">
+          <div class="selected-ponto-title" id="selectedPontoTitle">📍 Ponto selecionado</div>
+          <p id="selectedPontoInfo"></p>
+        </div>
+      </div>
+
+      <!-- Mapa visual -->
+      <div>
+        <div class="mapa-placeholder" id="mapaBox">
+          <div class="map-icon">🗺️</div>
+          <div class="map-text">Selecione uma cidade</div>
+          <div class="map-sub">O endereço completo e horário de funcionamento aparecerão aqui</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMENTÁRIOS -->
+  <div id="comentarios" class="comments-section">
+    <div class="comments-inner">
+      <div class="section-tag">Avaliações</div>
+      <h2 class="section-title">O que nossos clientes dizem</h2>
+      <p class="section-sub">Comentários reais de quem já alugou com a MotoSpike. Deixe o seu também!</p>
+
+      <div class="comments-grid">
+        <!-- Lista de reviews -->
+        <div>
+          <div class="rating-summary">
+            <div>
+              <div class="rating-big" id="avgRating">4.9</div>
+              <div class="rating-stars-big">★★★★★</div>
+              <div class="rating-total" id="totalReviews">12 avaliações</div>
+            </div>
+            <div style="flex:1">
+              <div id="ratingBars"></div>
+            </div>
+          </div>
+          <div class="reviews-list" id="reviewsList"></div>
+        </div>
+
+        <!-- Formulário de review -->
+        <div class="review-form-wrap">
+          <div class="review-form-title">✍️ Deixe seu comentário</div>
+          <div class="review-form-sub">Conta pra gente como foi sua experiência com a MotoSpike!</div>
+
+          <div>
+            <label style="font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.4rem">Sua avaliação</label>
+            <div class="star-select" id="starSelect">
+              <span class="star-btn" onclick="setStar(1)" data-star="1">★</span>
+              <span class="star-btn" onclick="setStar(2)" data-star="2">★</span>
+              <span class="star-btn" onclick="setStar(3)" data-star="3">★</span>
+              <span class="star-btn" onclick="setStar(4)" data-star="4">★</span>
+              <span class="star-btn" onclick="setStar(5)" data-star="5">★</span>
+            </div>
+          </div>
+          <input type="text" class="form-inp-light" id="reviewName" placeholder="Seu nome" maxlength="40"/>
+          <select class="form-select-light" id="reviewMoto">
+            <option value="" disabled selected>Moto que alugou</option>
+            <option>Honda Africa Twin</option><option>Triumph Tiger 900</option><option>BMW GS 1250</option>
+            <option>Triumph Tiger 800</option><option>Triumph Tiger 1200</option><option>Yamaha Ténéré 1250</option>
+            <option>BMW GS 300</option><option>Yamaha Storm 200</option><option>Honda Hornet</option>
+            <option>Kawasaki Z900</option><option>KTM Duke 1250</option><option>Harley-Davidson</option>
+            <option>Royal Enfield</option><option>BMW S1000 RR</option><option>Yamaha R1</option>
+            <option>Ducati 600</option><option>Honda CG 160</option><option>Honda CG 150</option>
+            <option>Honda CBF 300</option><option>Yamaha Fazer 250</option><option>Honda CB 600</option>
+            <option>Kawasaki Ninja 400</option><option>Yamaha R3</option><option>Yamaha R15</option>
+            <option>Honda PCX 160</option><option>Honda Biz 125</option><option>Lambretta V200</option>
+          </select>
+          <select class="form-select-light" id="reviewCity">
+            <option value="" disabled selected>Cidade de retirada</option>
+            <option>Sobradinho II — DF</option>
+            <option>Asa Sul — DF</option>
+            <option>Belém — PA</option>
+            <option>Balneário Camboriú — RS</option>
+          </select>
+          <textarea class="form-inp-light form-textarea-light" id="reviewText" placeholder="Conte sua experiência com a moto e a equipe..." maxlength="300"></textarea>
+          <button class="btn-comment" onclick="submitReview()">Publicar comentário 🏍️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTATO -->
+  <div id="contato" class="contact-section">
+    <div class="contact-inner">
+      <div>
+        <div class="section-tag">Contato</div>
+        <h2 class="section-title">Fale com a gente</h2>
+        <p class="section-sub">Equipe disponível 24h para tirar dúvidas, fazer reservas especiais ou personalizar seu plano Spike.</p>
+        <div>
+          <a href="https://wa.me/5500000000000" target="_blank" class="whats-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.487"/></svg>
+            WhatsApp
+          </a>
+          <a href="https://discord.gg/motospike" target="_blank" class="discord-btn">
+            <svg class="discord-icon" viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+            Discord
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <div><label class="form-label">Seu nome</label><input type="text" class="form-input" placeholder="Ex: João Silva"/></div>
+        <div><label class="form-label">Telefone / WhatsApp</label><input type="text" class="form-input" placeholder="(00) 00000-0000"/></div>
+        <div><label class="form-label">Assunto</label><select class="form-input" style="color:#fff"><option value="" disabled selected style="color:#444">Selecione</option><option>Reserva de moto avulsa</option><option>Plano Básico</option><option>Plano Pro</option><option>Plano VIP</option><option>Plano Spike (personalizado)</option><option>Dúvida geral</option></select></div>
+        <div><label class="form-label">Mensagem</label><textarea class="form-input form-textarea" placeholder="Data desejada, dúvidas, configuração do Spike..."></textarea></div>
+        <button class="form-submit" onclick="alert('Mensagem enviada! Retornamos em até 2h. 🏍️')">Enviar mensagem</button>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 <span>MotoSpike</span> — Aluguel de Motos · Todos os direitos reservados</footer>
+</div><!-- /page-home -->
+
+<!-- ══════════════════════════════════
+     PAGE: PLAN PURCHASE
+══════════════════════════════════ -->
+<div id="page-plan" class="page">
+  <div class="plan-purchase-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Voltar aos planos</button>
+
+    <!-- Banner dinâmico do plano -->
+    <div id="planBanner" class="plan-banner"></div>
+
+    <!-- Kit strip (Pro/VIP/Spike) -->
+    <div class="kit-strip" id="kitStrip" style="display:none">
+      <div class="kit-strip-icon">🪖🧤</div>
+      <div class="kit-strip-text">
+        <strong>Kit Capacete + Luvas incluso</strong>
+        Você receberá capacete e luvas homologados no momento da entrega da moto.
+      </div>
+    </div>
+
+    <!-- Config Spike -->
+    <div class="spike-config" id="spikeConfig" style="display:none">
+      <div class="spike-config-title">⚙️ Configure seu Plano Spike</div>
+      <div class="spike-config-sub">Escolha quantas motos você quer e selecione livremente no catálogo abaixo.</div>
+      <div class="spike-slots-row">
+        <span class="spike-label">Quantidade de motos:</span>
+        <div class="spike-counter">
+          <button class="spike-counter-btn" onclick="changeSpikeSlots(-1)">−</button>
+          <span class="spike-slots-num" id="spikeSlotsNum">1</span>
+          <button class="spike-counter-btn" onclick="changeSpikeSlots(1)">+</button>
+        </div>
+        <span class="spike-price-preview" id="spikePricePreview">Base: R$800/dia por moto</span>
+      </div>
+    </div>
+
+    <!-- Seletor de motos -->
+    <div class="moto-selector-title"><span>🏍️</span> Selecione suas motos</div>
+    <div class="slots-info" id="slotsInfo"></div>
+    <div class="plan-motos-grid" id="planMotosGrid"></div>
+
+    <!-- Retirada no Plano -->
+    <div class="plan-summary" style="margin-bottom:1.5rem">
+      <div class="plan-summary-title"><span>📍</span> Ponto de retirada</div>
+      <div style="margin-bottom:.8rem">
+        <label style="font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.5rem">Estado</label>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <button class="ret-estado-btn active" onclick="selectPlanRetEstado('df',this)">🏛️ DF</button>
+          <button class="ret-estado-btn" onclick="selectPlanRetEstado('pa',this)">🌿 PA</button>
+          <button class="ret-estado-btn" onclick="selectPlanRetEstado('rs',this)">⛵ RS</button>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.5rem">Cidade</label>
+        <div id="planRetCidadesWrap" style="display:flex;flex-direction:column;gap:.5rem"></div>
+      </div>
+      <div id="planRetSelecionado" style="display:none;margin-top:.8rem;background:#fff8f6;border:1.5px solid var(--accent);border-radius:10px;padding:.9rem 1rem">
+        <div style="font-size:.72rem;color:var(--accent);font-weight:700;margin-bottom:.3rem">📍 Ponto selecionado</div>
+        <div id="planRetSelecionadoInfo" style="font-size:.8rem;color:var(--muted);line-height:1.6"></div>
+      </div>
+    </div>
+
+    <!-- Resumo + Cupom -->
+    <div class="plan-summary">
+      <div class="plan-summary-title"><span>💰</span> Resumo do pedido</div>
+      <div class="sum-row muted"><span>Plano</span><span id="sumPlanName">—</span></div>
+      <div class="sum-row muted"><span>Motos selecionadas</span><span id="sumMotoCount">0</span></div>
+      <div class="sum-row muted"><span id="sumDaysLbl">Dias</span><span id="sumDaysVal2">1 dia</span></div>
+      <div class="sum-row green" id="sumDayDiscRow2" style="display:none"><span id="sumDayDiscLbl2">Desconto período</span><span id="sumDayDiscVal2">-0%</span></div>
+      <div class="sum-row green" id="sumCouponRow2" style="display:none"><span id="sumCouponLbl2">Cupom</span><span id="sumCouponVal2">-0%</span></div>
+      <div class="sum-divider"></div>
+      <div class="sum-row"><span style="font-weight:500">Total estimado / dia</span><span class="sum-total" id="sumTotalPlan">R$0</span></div>
+      <div style="margin-top:1rem">
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:.5rem">📅 Número de dias:</div>
+        <div class="time-grid" style="margin-bottom:.6rem">
+          <div class="time-btn selected" onclick="selectPlanDays(1,this)">1 dia<small>sem desc.</small></div>
+          <div class="time-btn" onclick="selectPlanDays(3,this)">3 dias<small>-5%</small></div>
+          <div class="time-btn" onclick="selectPlanDays(7,this)">7 dias<small>-10%</small></div>
+          <div class="time-btn" onclick="selectPlanDays(15,this)">15 dias<small>-15%</small></div>
+          <div class="time-btn" onclick="selectPlanDays(30,this)">30 dias<small>-20%</small></div>
+        </div>
+        <div class="time-custom">
+          <label>Personalizado:</label>
+          <input type="number" class="time-inp" id="planCustomDays" min="1" max="365" placeholder="0" oninput="selectPlanCustomDays(this.value)"/>
+          <span style="font-size:.8rem;color:var(--muted)">dias</span>
+        </div>
+      </div>
+      <div style="margin-top:1rem">
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem">🎟️ Cupom de desconto:</div>
+        <div class="coupon-row2">
+          <input type="text" class="coupon-input2" id="planCouponInput" placeholder="Seu cupom..."/>
+          <button class="coupon-btn2" onclick="applyPlanCoupon()">Aplicar</button>
+        </div>
+        <div class="coupon-msg2" id="planCouponMsg"></div>
+        <div class="coupon-hint2">Cupons: <strong>SPIKE10</strong> · <strong>MOTO20</strong> · <strong>VIP30</strong></div>
+      </div>
+      <button class="btn-buy" id="btnBuyPlan" onclick="confirmPlanOrder()">Confirmar reserva do plano 🏍️</button>
+    </div>
+  </div>
+</div><!-- /page-plan -->
+
+<!-- ══════════════════════════════════
+     PAGE: CHECKOUT (avulso)
+══════════════════════════════════ -->
+<div id="page-checkout" class="page">
+  <div class="checkout-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Voltar ao catálogo</button>
+    <div style="font-family:'Inter',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.03em;margin-bottom:.3rem">Finalizar reserva</div>
+    <div style="font-size:.88rem;color:var(--muted);margin-bottom:2.5rem">Revise as motos, escolha os dias e aplique cupom.</div>
+    <div class="checkout-grid">
+      <div>
+        <div class="co-card">
+          <div class="co-card-title"><span>👤</span> Seus dados</div>
+          <input type="text" class="nick-input" id="nickInput" placeholder="Nome completo"/>
+          <input type="text" class="nick-input" id="phoneInput" placeholder="Telefone / WhatsApp"/>
+        </div>
+        <div class="co-card">
+          <div class="co-card-title"><span>📍</span> Ponto de retirada</div>
+
+          <div style="margin-bottom:.8rem">
+            <label style="font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.5rem">Estado</label>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+              <button class="ret-estado-btn active" onclick="selectRetEstado('df',this)">🏛️ DF</button>
+              <button class="ret-estado-btn" onclick="selectRetEstado('pa',this)">🌿 PA</button>
+              <button class="ret-estado-btn" onclick="selectRetEstado('rs',this)">⛵ RS</button>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.5rem">Cidade e ponto de retirada</label>
+            <div id="retCidadesWrap" style="display:flex;flex-direction:column;gap:.5rem"></div>
+          </div>
+
+          <div id="retSelecionado" style="display:none;margin-top:.8rem;background:#fff8f6;border:1.5px solid var(--accent);border-radius:10px;padding:.9rem 1rem">
+            <div style="font-size:.72rem;color:var(--accent);font-weight:700;margin-bottom:.3rem">📍 Ponto selecionado</div>
+            <div id="retSelecionadoInfo" style="font-size:.8rem;color:var(--muted);line-height:1.6"></div>
+          </div>
+        </div>
+        <div class="co-card">
+          <div class="co-card-title"><span>📅</span> Dias de aluguel</div>
+          <div class="time-grid">
+            <div class="time-btn selected" onclick="selectDays(1,this)">1 dia<small>sem desc.</small></div>
+            <div class="time-btn" onclick="selectDays(3,this)">3 dias<small>-5%</small></div>
+            <div class="time-btn" onclick="selectDays(7,this)">7 dias<small>-10%</small></div>
+            <div class="time-btn" onclick="selectDays(15,this)">15 dias<small>-15%</small></div>
+            <div class="time-btn" onclick="selectDays(30,this)">30 dias<small>-20%</small></div>
+          </div>
+          <div class="time-custom">
+            <label>Personalizado:</label>
+            <input type="number" class="time-inp" id="customDays" min="1" max="365" placeholder="0" oninput="selectCustomDays(this.value)"/>
+            <span style="font-size:.8rem;color:var(--muted)">dias</span>
+          </div>
+        </div>
+        <div class="co-card">
+          <div class="co-card-title"><span>🎟️</span> Cupom de desconto</div>
+          <div class="coupon-row">
+            <input type="text" class="coupon-input" id="couponInput" placeholder="Digite seu cupom..."/>
+            <button class="coupon-btn" onclick="applyCoupon()">Aplicar</button>
+          </div>
+          <div class="coupon-msg" id="couponMsg"></div>
+          <div class="coupon-hint">Cupons: <strong>SPIKE10</strong> · <strong>MOTO20</strong> · <strong>VIP30</strong></div>
+        </div>
+      </div>
+      <div>
+        <div class="co-card">
+          <div class="co-card-title"><span>🏍️</span> Motos selecionadas</div>
+          <div id="coItemsList"></div>
+        </div>
+        <div class="co-card">
+          <div class="co-card-title"><span>💰</span> Resumo</div>
+          <div class="summary-row muted"><span>Subtotal / dia</span><span id="sumSubtotal">R$0</span></div>
+          <div class="summary-row muted"><span id="sumDaysLabel">Período</span><span id="sumDaysVal">1 dia</span></div>
+          <div class="summary-row green" id="sumDayDiscRow" style="display:none"><span id="sumDayDiscLabel">Desc. período</span><span id="sumDayDiscVal">-0%</span></div>
+          <div class="summary-row green" id="sumCouponRow" style="display:none"><span id="sumCouponLabel">Cupom</span><span id="sumCouponVal">-0%</span></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row"><span style="font-weight:500;font-size:.9rem">Total</span><span class="summary-total-val" id="sumTotal">R$0</span></div>
+          <div style="font-size:.7rem;color:var(--muted);margin-top:.3rem">* Confirmado na assinatura do contrato</div>
+          <button class="btn-confirm" id="btnConfirm" onclick="confirmOrder()">Confirmar reserva 🏍️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">🛒 Carrinho</div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span class="cart-total-label">Total / dia</span><span class="cart-total-val" id="cartTotal">R$0</span></div>
+    <button class="btn-cart-checkout" id="btnCartCheckout" onclick="goCheckout()">Ir para o checkout →</button>
+  </div>
+</div>
+
+<!-- MODAL SUCESSO -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title" id="modalTitle">Reserva confirmada!</div>
+    <div class="modal-sub" id="modalSub">Sua solicitação foi registrada. Nossa equipe entrará em contato em até 2h pelo WhatsApp para confirmar a disponibilidade e assinar o contrato. Boa pilotagem!</div>
+    <button class="modal-btn" onclick="closeModal()">Voltar ao site</button>
+  </div>
+</div>
+
+  <!-- MODAL: Versão da moto no Plano -->
+  <div class="modal-overlay" id="planVersionModal">
+    <div class="modal" style="max-width:460px">
+      <div class="modal-icon" id="planVerModalEmoji">🏍️</div>
+      <div class="modal-title" id="planVerModalName">Moto</div>
+      <div class="modal-sub" id="planVerModalCat" style="margin-bottom:1rem"></div>
+      <div id="planVerBrakeWrap" style="margin-bottom:1.2rem;text-align:left">
+        <div style="font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.6rem">Sistema de freio</div>
+        <div id="planVerBrakeOptions" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+      </div>
+      <div id="planVerVariantWrap" style="margin-bottom:1.5rem;text-align:left">
+        <div style="font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.6rem">Variante / câmbio</div>
+        <div id="planVerVariantOptions" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+      </div>
+      <div style="display:flex;gap:.8rem">
+        <button class="modal-btn" style="background:var(--border);color:var(--text);flex:1" onclick="closePlanVersionModal()">Cancelar</button>
+        <button class="modal-btn" style="flex:1" onclick="confirmPlanVersion()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+<!-- ══════════════════════════════════
+     MODAL: Freio + Variante (carrinho avulso)
+══════════════════════════════════ -->
+<div class="modal-overlay" id="brakeModal">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-icon" id="brakeModalEmoji">🏍️</div>
+    <div class="modal-title" id="brakeModalName">Moto</div>
+    <div class="modal-sub" id="brakeModalCat" style="margin-bottom:1rem"></div>
+
+    <div id="brakeSelectWrap" style="margin-bottom:1.2rem;text-align:left">
+      <div style="font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.6rem">
+        Sistema de freio
+      </div>
+      <div id="brakeOptions" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+    </div>
+
+    <div id="variantSelectWrap" style="margin-bottom:1.5rem;text-align:left">
+      <div style="font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.6rem">
+        Variante / câmbio
+      </div>
+      <div id="variantOptions" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+    </div>
+
+    <div style="display:flex;gap:.8rem">
+      <button class="modal-btn" style="background:var(--border);color:var(--text);flex:1" onclick="closeBrakeModal()">
+        Cancelar
+      </button>
+      <button class="modal-btn" style="flex:1" onclick="confirmBrakeSelection()">
+        Confirmar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="js/planos.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
